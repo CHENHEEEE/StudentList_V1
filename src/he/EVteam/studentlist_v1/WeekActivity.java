@@ -172,250 +172,97 @@ public class WeekActivity extends Activity {
 		});
 		
 		//列表单击事件监听
-		mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				int day = Integer.parseInt(listItems.get(position).get("ID"));
-				final String ID = "a"+listItems.get(position).get("ID");
-				Log.d("ID", ID);
-
-				if(user.equals(sname)){
-					final Dialog dialog = new Dialog(WeekActivity.this);
-					dialog.setContentView(R.layout.dialog_update);
-					mTextView = (TextView)dialog.findViewById(R.id.arrangetext);
-					dialog.setTitle(week_f[day-1]);
-					mTextView.setText(arrangeList[day-1]);
-					Window dialogWindow = dialog.getWindow();
-					WindowManager.LayoutParams lp = dialogWindow.getAttributes();
-					dialogWindow.setGravity(Gravity.CENTER);
-					dialogWindow.setAttributes(lp);
-
-					Button btnConfirm = (Button) dialog.findViewById(R.id.button1);
-					Button btnCancel = (Button) dialog.findViewById(R.id.button2);
-
-					btnConfirm.setOnClickListener(new OnClickListener() {
-
-						@Override
-						public void onClick(View v) {
-							//日程更新
-							EditText cNoEditText = (EditText) dialog.findViewById(R.id.editText1);
-							final String text=cNoEditText.getText().toString();
-							Log.d("text",text);
-							dialog.dismiss();
-
-							//时间信息
-							SimpleDateFormat    formatter    =   new    SimpleDateFormat    ("MM月dd日 HH:mm     ");       
-							Date    curDate    =   new    Date(System.currentTimeMillis());//获取当前时间       
-							String    time    =    formatter.format(curDate);
-
-							new NetAsyncTask1().execute(ID,text,time);
-
-							Toast.makeText(WeekActivity.this, "更新中", Toast.LENGTH_SHORT).show();
-						}
-					});
-
-					btnCancel.setOnClickListener(new OnClickListener() {
-
-						@Override
-						public void onClick(View v) {
-							dialog.dismiss();
-						}
-					});
-
-					dialog.show();
-					}
-				else{
-						final Dialog dialog1 = new Dialog(WeekActivity.this);
-						dialog1.setContentView(R.layout.dialog_view);
-						mTextView = (TextView)dialog1.findViewById(R.id.arrangetext);
-						dialog1.setTitle(week_f[day-1]);
-						mTextView.setText(arrangeList[day-1]);
-						Window dialogWindow = dialog1.getWindow();
-						WindowManager.LayoutParams lp = dialogWindow.getAttributes();
-						dialogWindow.setGravity(Gravity.CENTER);
-						dialogWindow.setAttributes(lp);
-
-						Button btnCancel = (Button) dialog1.findViewById(R.id.button2);
-
-						
-
-						btnCancel.setOnClickListener(new OnClickListener() {
-
-							@Override
-							public void onClick(View v) {
-								dialog1.dismiss();
-								}
-							});
-						dialog1.show();
-						}
-				}
-		});
+		mListView.setOnItemClickListener(new ItemListener());
 		
-		mListView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+		mListView1.setOnItemClickListener(new ItemListener());
 
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				int day = Integer.parseInt(listItems.get(position).get("ID"));
-				final String ID = "a"+listItems.get(position).get("ID");
-				Log.d("ID", ID);
+		mlistviewD.setOnItemClickListener(new ItemListener());
 
-				if(user.equals(sname)){
-					final Dialog dialog = new Dialog(WeekActivity.this);
-					dialog.setContentView(R.layout.dialog_update);
-					mTextView = (TextView)dialog.findViewById(R.id.arrangetext);
-					dialog.setTitle(week_f[day-1]);
-					mTextView.setText(arrangeList[day-1]);
-					Window dialogWindow = dialog.getWindow();
-					WindowManager.LayoutParams lp = dialogWindow.getAttributes();
-					dialogWindow.setGravity(Gravity.CENTER);
-					dialogWindow.setAttributes(lp);
 
-					Button btnConfirm = (Button) dialog.findViewById(R.id.button1);
-					Button btnCancel = (Button) dialog.findViewById(R.id.button2);
-
-					btnConfirm.setOnClickListener(new OnClickListener() {
-
-						@Override
-						public void onClick(View v) {
-							//日程更新
-							EditText cNoEditText = (EditText) dialog.findViewById(R.id.editText1);
-							final String text=cNoEditText.getText().toString();
-							Log.d("text",text);
-							dialog.dismiss();
-
-							//时间信息
-							SimpleDateFormat    formatter    =   new    SimpleDateFormat    ("MM月dd日 HH:mm     ");       
-							Date    curDate    =   new    Date(System.currentTimeMillis());//获取当前时间       
-							String    time    =    formatter.format(curDate);
-
-							new NetAsyncTask1().execute(ID,text,time);
-
-							Toast.makeText(WeekActivity.this, "更新中", Toast.LENGTH_SHORT).show();
-						}
-					});
-
-					btnCancel.setOnClickListener(new OnClickListener() {
-
-						@Override
-						public void onClick(View v) {
-							dialog.dismiss();
-						}
-					});
-
-					dialog.show();
-					}
-				else{
-						final Dialog dialog1 = new Dialog(WeekActivity.this);
-						dialog1.setContentView(R.layout.dialog_view);
-						mTextView = (TextView)dialog1.findViewById(R.id.arrangetext);
-						dialog1.setTitle(week_f[day-1]);
-						mTextView.setText(arrangeList[day-1]);
-						Window dialogWindow = dialog1.getWindow();
-						WindowManager.LayoutParams lp = dialogWindow.getAttributes();
-						dialogWindow.setGravity(Gravity.CENTER);
-						dialogWindow.setAttributes(lp);
-
-						Button btnCancel = (Button) dialog1.findViewById(R.id.button2);
-
-						
-
-						btnCancel.setOnClickListener(new OnClickListener() {
-
-							@Override
-							public void onClick(View v) {
-								dialog1.dismiss();
-								}
-							});
-						dialog1.show();
-						}
-				}
-		});
-		
-		mlistviewD.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				int day = Integer.parseInt(listItems.get(position).get("ID"));
-				final String ID = "a"+listItems.get(position).get("ID");
-				Log.d("ID", ID);
-
-				if(user.equals(sname)){
-					final Dialog dialog = new Dialog(WeekActivity.this);
-					dialog.setContentView(R.layout.dialog_update);
-					mTextView = (TextView)dialog.findViewById(R.id.arrangetext);
-					dialog.setTitle(week_f[day-1]);
-					mTextView.setText(arrangeList[day-1]);
-					Window dialogWindow = dialog.getWindow();
-					WindowManager.LayoutParams lp = dialogWindow.getAttributes();
-					dialogWindow.setGravity(Gravity.CENTER);
-					dialogWindow.setAttributes(lp);
-
-					Button btnConfirm = (Button) dialog.findViewById(R.id.button1);
-					Button btnCancel = (Button) dialog.findViewById(R.id.button2);
-
-					btnConfirm.setOnClickListener(new OnClickListener() {
-
-						@Override
-						public void onClick(View v) {
-							//日程更新
-							EditText cNoEditText = (EditText) dialog.findViewById(R.id.editText1);
-							final String text=cNoEditText.getText().toString();
-							Log.d("text",text);
-							dialog.dismiss();
-
-							//时间信息
-							SimpleDateFormat    formatter    =   new    SimpleDateFormat    ("MM月dd日 HH:mm     ");       
-							Date    curDate    =   new    Date(System.currentTimeMillis());//获取当前时间       
-							String    time    =    formatter.format(curDate);
-
-							new NetAsyncTask1().execute(ID,text,time);
-
-							Toast.makeText(WeekActivity.this, "更新中", Toast.LENGTH_SHORT).show();
-						}
-					});
-
-					btnCancel.setOnClickListener(new OnClickListener() {
-
-						@Override
-						public void onClick(View v) {
-							dialog.dismiss();
-						}
-					});
-
-					dialog.show();
-					}
-				else{
-						final Dialog dialog1 = new Dialog(WeekActivity.this);
-						dialog1.setContentView(R.layout.dialog_view);
-						mTextView = (TextView)dialog1.findViewById(R.id.arrangetext);
-						dialog1.setTitle(week_f[day-1]);
-						mTextView.setText(arrangeList[day-1]);
-						Window dialogWindow = dialog1.getWindow();
-						WindowManager.LayoutParams lp = dialogWindow.getAttributes();
-						dialogWindow.setGravity(Gravity.CENTER);
-						dialogWindow.setAttributes(lp);
-
-						Button btnCancel = (Button) dialog1.findViewById(R.id.button2);
-
-						
-
-						btnCancel.setOnClickListener(new OnClickListener() {
-
-							@Override
-							public void onClick(View v) {
-								dialog1.dismiss();
-								}
-							});
-						dialog1.show();
-						}
-				}
-		});
 	}
-	
+
+	//列表监听
+	class ItemListener implements AdapterView.OnItemClickListener{
+
+		@Override
+		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+			// TODO Auto-generated method stub
+			int day = Integer.parseInt(listItems.get(position).get("ID"));
+			final String ID = "a"+listItems.get(position).get("ID");
+			Log.d("ID", ID);
+
+			if(user.equals(sname)){
+				final Dialog dialog = new Dialog(WeekActivity.this);
+				dialog.setContentView(R.layout.dialog_update);
+				mTextView = (TextView)dialog.findViewById(R.id.arrangetext);
+				dialog.setTitle(week_f[day-1]);
+				mTextView.setText(arrangeList[day-1]);
+				Window dialogWindow = dialog.getWindow();
+				WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+				dialogWindow.setGravity(Gravity.CENTER);
+				dialogWindow.setAttributes(lp);
+
+				Button btnConfirm = (Button) dialog.findViewById(R.id.button1);
+				Button btnCancel = (Button) dialog.findViewById(R.id.button2);
+
+				btnConfirm.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						//日程更新
+						EditText cNoEditText = (EditText) dialog.findViewById(R.id.editText1);
+						final String text=cNoEditText.getText().toString();
+						Log.d("text",text);
+						dialog.dismiss();
+
+						//时间信息
+						SimpleDateFormat    formatter    =   new    SimpleDateFormat    ("MM月dd日 HH:mm     ");       
+						Date    curDate    =   new    Date(System.currentTimeMillis());//获取当前时间       
+						String    time    =    formatter.format(curDate);
+
+						new NetAsyncTask1().execute(ID,text,time);
+
+						Toast.makeText(WeekActivity.this, "更新中", Toast.LENGTH_SHORT).show();
+					}
+				});
+
+				btnCancel.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						dialog.dismiss();
+					}
+				});
+
+				dialog.show();
+			}
+			else{
+				final Dialog dialog1 = new Dialog(WeekActivity.this);
+				dialog1.setContentView(R.layout.dialog_view);
+				mTextView = (TextView)dialog1.findViewById(R.id.arrangetext);
+				dialog1.setTitle(week_f[day-1]);
+				mTextView.setText(arrangeList[day-1]);
+				Window dialogWindow = dialog1.getWindow();
+				WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+				dialogWindow.setGravity(Gravity.CENTER);
+				dialogWindow.setAttributes(lp);
+
+				Button btnCancel = (Button) dialog1.findViewById(R.id.button2);
+
+
+
+				btnCancel.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						dialog1.dismiss();
+					}
+				});
+				dialog1.show();
+			}
+		}
+	}
+			
 	//ListView同步滚动
 	class MyScrollListener implements OnScrollListener {  
 
