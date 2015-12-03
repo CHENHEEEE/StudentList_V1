@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">日程管理</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <drawable name="clr_normal">#00000000</drawable>
+    <drawable name="clr_pressed">#99CCFF</drawable>
+
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
+    <string name="update_hint">请输新的安排</string>
+    <string name="time">时间</string>
+    <string name="arr">安排</string>
+    <string name="updatetime">更新时间</string>
+    <string name="clear">清除</string>
+    <string name="refresh">刷新</string>
+    <string name="textsize">15sp</string>
+
+    <color name="light_grey">#DCE7E9</color>
+    <color name="list_bg">#98F5FF</color>
+    <color name="button">#44adf9</color>
+
+    <string name="title_activity_list">ListActivity</string>
+
+</resources>
